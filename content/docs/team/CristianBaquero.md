@@ -6,7 +6,7 @@
 
 <---> <!-- magic separator, between columns -->
 
-System and Computing Engineering student - last semesters.
+System and Computing Engineering student - last semesters
 
 Hobbies: 
 - Play soccer, both physically and in video games
