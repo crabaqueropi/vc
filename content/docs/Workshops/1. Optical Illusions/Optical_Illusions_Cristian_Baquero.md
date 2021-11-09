@@ -33,3 +33,20 @@ Now we have to compose our image, which you can do by combining the individual f
 Now, all we have to do is make our mask to pass the composite image in animation, and that's it.
 
 Taken from: https://www.opticalillusion.net/optical-illusions/animated-moire-or-scanimation/
+
+## Possible practical application
+
+The barrier-grid technique originated in the late 1890s, overlapping with the development of parallax stereography (Relièphographie) for 3D [autostereograms](https://en.wikipedia.org/wiki/Autostereogram). The technique has also been used for color-changing pictures, but to a much lesser extent.
+
+The development of barrier-grid technologies can also be regarded as a step towards [lenticular printing](https://en.wikipedia.org/wiki/Lenticular_printing), although the technique has remained after the invention of lenticular technologies as a relatively cheap and simple way to produce animated images in print.
+
+{{< figure src="/vc/images/analog-lenticular/Lenticular-printing.jpg" width="700">}}
+
+"Scanimation", incorporating sliding striped acetate sheets into book pages or folding cards to produce barrier-grid animations of six phases or more at each page, was produced by Rufus Butler Seder starting in 2007. The first book Gallop! was followed by Swing!, Kick, Waddle!, Santa and licensed scanimation books of Star Wars, The Wizard of Oz and Peanuts.
+
+{{< youtube eVG8tMW4Ctw >}}
+
+Taken from: https://en.wikipedia.org/wiki/Barrier-grid_animation_and_stereography
+
+
+
