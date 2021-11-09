@@ -13,3 +13,7 @@ The moiré pattern is a visual interference; a geometric distortion effect cause
 {{< figure src="/vc/images/MoirePattern/owl.png" width="600">}}
 
 Taken from: https://www.impresum.es/blog/efecto-moire-o-muare/
+
+{{< figure src="/vc/images/MoirePattern/animation.gif" width="600">}}
+
+Taken from: https://www.neoteo.com/patron-de-muare/
