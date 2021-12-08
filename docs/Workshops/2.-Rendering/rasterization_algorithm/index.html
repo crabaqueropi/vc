@@ -2,16 +2,14 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Buttons #  Buttons are styled links that can lead to local page or external link.
-Example #  {{< button relref=&#34;/&#34; [class=&#34;...&#34;] >}}Get Home{{< /button >}} {{< button href=&#34;https://github.com/alex-shpak/hugo-book&#34; >}}Contribute{{< /button >}}  Get Home  Contribute  ">
+<meta name=description content="Rendering #            &#34;  ">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Buttons #  Buttons are styled links that can lead to local page or external link.
-Example #  {{< button relref=&#34;/&#34; [class=&#34;...&#34;] >}}Get Home{{< /button >}} {{< button href=&#34;https://github.com/alex-shpak/hugo-book&#34; >}}Contribute{{< /button >}}  Get Home  Contribute  ">
+<meta property="og:description" content="Rendering #            &#34;  ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://crabaqueropi.github.io/vc/docs/shortcodes/buttons/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-07-12T07:11:39-05:00">
-<title>Buttons | Visual Computing</title>
+<meta property="og:url" content="https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/rasterization_algorithm/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-12-08T14:55:23-05:00">
+<title>Rasterization Algorithm | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
@@ -36,13 +34,13 @@ Example #  {{< button relref=&#34;/&#34; [class=&#34;...&#34;] >}}Get Home{{< /b
 </div>
 <ul>
 <li>
-<input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle checked>
+<input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
 <label for=section-9370f1a5d0248572ac505e0c6d4ad190 class="flex justify-between">
 <a href=https://crabaqueropi.github.io/vc/docs/shortcodes/>Shortcodes</a>
 </label>
 <ul>
 <li>
-<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/buttons/ class=active>Buttons</a>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/buttons/>Buttons</a>
 </li>
 <li>
 <a href=https://crabaqueropi.github.io/vc/docs/shortcodes/columns/>Columns</a>
@@ -102,7 +100,7 @@ Example #  {{< button relref=&#34;/&#34; [class=&#34;...&#34;] >}}Get Home{{< /b
 </ul>
 </li>
 <li>
-<input type=checkbox id=section-3b150fd6d17eaeb8e2c23d2deaf47560 class=toggle>
+<input type=checkbox id=section-3b150fd6d17eaeb8e2c23d2deaf47560 class=toggle checked>
 <label for=section-3b150fd6d17eaeb8e2c23d2deaf47560 class="flex justify-between">
 <a href=https://crabaqueropi.github.io/vc/docs/Workshops/>Workshops</a>
 </label>
@@ -128,13 +126,13 @@ Example #  {{< button relref=&#34;/&#34; [class=&#34;...&#34;] >}}Get Home{{< /b
 </ul>
 </li>
 <li>
-<input type=checkbox id=section-4fae765cd71486999e52f2020b1fcd28 class=toggle>
+<input type=checkbox id=section-4fae765cd71486999e52f2020b1fcd28 class=toggle checked>
 <label for=section-4fae765cd71486999e52f2020b1fcd28 class="flex justify-between">
 <a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/>2. Rendering</a>
 </label>
 <ul>
 <li>
-<a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/rasterization_algorithm/>Rasterization Algorithm</a>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/rasterization_algorithm/ class=active>Rasterization Algorithm</a>
 </li>
 </ul>
 </li>
@@ -158,7 +156,7 @@ Blog
 <label for=menu-control>
 <img src=/vc/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Buttons</strong>
+<strong>Rasterization Algorithm</strong>
 <label for=toc-control>
 <img src=/vc/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -166,40 +164,38 @@ Blog
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#buttons>Buttons</a>
-<ul>
-<li><a href=#example>Example</a></li>
-</ul>
-</li>
+<li><a href=#rendering>Rendering</a></li>
 </ul>
 </nav>
 </aside>
 </header>
-<article class=markdown><h1 id=buttons>
-Buttons
-<a class=anchor href=#buttons>#</a>
+<article class=markdown><h1 id=rendering>
+Rendering
+<a class=anchor href=#rendering>#</a>
 </h1>
-<p>Buttons are styled links that can lead to local page or external link.</p>
-<h2 id=example>
-Example
-<a class=anchor href=#example>#</a>
-</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tpl data-lang=tpl><span style=color:#75715e>{{</span><span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>button</span> <span style=color:#a6e22e>relref</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/&#34;</span> <span style=color:#f92672>[</span><span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;...&#34;</span><span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span><span style=color:#75715e>}}</span>Get Home<span style=color:#75715e>{{</span><span style=color:#f92672>&lt;</span> <span style=color:#f92672>/</span><span style=color:#a6e22e>button</span> <span style=color:#f92672>&gt;</span><span style=color:#75715e>}}</span>
-<span style=color:#75715e>{{</span><span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>button</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://github.com/alex-shpak/hugo-book&#34;</span> <span style=color:#f92672>&gt;</span><span style=color:#75715e>}}</span>Contribute<span style=color:#75715e>{{</span><span style=color:#f92672>&lt;</span> <span style=color:#f92672>/</span><span style=color:#a6e22e>button</span> <span style=color:#f92672>&gt;</span><span style=color:#75715e>}}</span>
-</code></pre></div><p>
-<a href=/vc/ class=book-btn>
-Get Home
-</a>
-<a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener class=book-btn>
-Contribute
-</a>
-</p>
+<iframe id=zBuffer4 style=width:500px;height:500px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js></script> 
+            
+            
+            
+            
+            <script src=/vc/workshops/Rasterization/zBuffer4.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/268ec346f0b648c6ded618232d67d8b43a1d58d6 title="Last modified by nakednous | July 12, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/f2bf419516abc81874ed508f0e27b10e1a3c2abd title="Last modified by crabaqueropi | December 8, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>July 12, 2021</span>
+<span>December 8, 2021</span>
 </a>
 </div>
 </div>
@@ -213,11 +209,7 @@ Contribute
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#buttons>Buttons</a>
-<ul>
-<li><a href=#example>Example</a></li>
-</ul>
-</li>
+<li><a href=#rendering>Rendering</a></li>
 </ul>
 </nav>
 </div>
