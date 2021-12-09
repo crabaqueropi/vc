@@ -6,7 +6,7 @@ var near, far;
 let myShader;
 
 function preload() {
-  myShader = loadShader("/vc/docs/sketches/rendering/shaderOriginal.vert", "/vc/docs/sketches/rendering/depthmap.frag");
+  myShader = loadShader("/vc/workshops/Rasterization/shaderOriginal.vert", "/vc/workshops/Rasterization/depthmap.frag");
 }
 
 function setup() {
