@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Rendering #            &#34;  ">
+<meta name=description content="Rendering #  Z-Buffer #  Introducción #  Con el desarrollo de la tecnología informática, ha aumentado el potencial para crear entornos visuales cada vez más realistas. Sin embargo, llevar este tipo de realismo a los usuarios también conlleva algunos desafíos. En términos generales, esto está relacionado con el modelado físico del mundo real., En Máquinas con capacidad limitada. Con base en estas limitaciones, lo que se busca es mejorar el nivel de realidad visual, pero al mismo tiempo reducir el tiempo requerido para procesarla.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Rendering #            &#34;  ">
+<meta property="og:description" content="Rendering #  Z-Buffer #  Introducción #  Con el desarrollo de la tecnología informática, ha aumentado el potencial para crear entornos visuales cada vez más realistas. Sin embargo, llevar este tipo de realismo a los usuarios también conlleva algunos desafíos. En términos generales, esto está relacionado con el modelado físico del mundo real., En Máquinas con capacidad limitada. Con base en estas limitaciones, lo que se busca es mejorar el nivel de realidad visual, pero al mismo tiempo reducir el tiempo requerido para procesarla.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/rasterization_algorithm/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-09T09:51:26-05:00">
+<meta property="article:modified_time" content="2021-12-11T16:08:27-05:00">
 <title>Rasterization Algorithm | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.43cdd06a77d64e0bb23902abe70a57e4544498470fd412c56712d47a949d1e66.js integrity="sha256-Q83QanfWTguyOQKr5wpX5FREmEcP1BLFZxLUepSdHmY=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.397a250ad488c2c7ce74d65524cf209bde8591bb25a03910781631196538b5f8.js integrity="sha256-OXolCtSIwsfOdNZVJM8gm96FkbsloDkQeBYxGWU4tfg=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -165,6 +165,17 @@ Blog
 <nav id=TableOfContents>
 <ul>
 <li><a href=#rendering>Rendering</a></li>
+<li><a href=#z-buffer>Z-Buffer</a>
+<ul>
+<li><a href=#introducción>Introducción</a></li>
+<li><a href=#el-problema-de-la-visibilidad>El problema de la visibilidad</a></li>
+<li><a href=#problema-de-la-visibilidad-llevado-a-la-computación-visual>Problema de la visibilidad llevado a la computación visual</a></li>
+<li><a href=#método-z-buffer>Método Z-Buffer</a></li>
+<li><a href=#sin-z-buffer>Sin Z-Buffer</a></li>
+<li><a href=#con-z-buffer>Con Z-Buffer</a></li>
+<li><a href=#referencias>Referencias</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </aside>
@@ -173,6 +184,64 @@ Blog
 Rendering
 <a class=anchor href=#rendering>#</a>
 </h1>
+<h1 id=z-buffer>
+Z-Buffer
+<a class=anchor href=#z-buffer>#</a>
+</h1>
+<h2 id=introducción>
+Introducción
+<a class=anchor href=#introducci%c3%b3n>#</a>
+</h2>
+<p>Con el desarrollo de la tecnología informática, ha aumentado el potencial para crear entornos visuales cada vez más realistas. Sin embargo, llevar este tipo de realismo a los usuarios también conlleva algunos desafíos. En términos generales, esto está relacionado con el modelado físico del mundo real., En Máquinas con capacidad limitada. Con base en estas limitaciones, lo que se busca es mejorar el nivel de realidad visual, pero al mismo tiempo reducir el tiempo requerido para procesarla. Obviamente, estas dos cosas están estrechamente relacionadas, por lo que debe lograr un equilibrio entre las dos.</p>
+<p>El algoritmo utilizado juega un papel clave en la reducción del tiempo de procesamiento, por lo que el algoritmo debe ser una solución &ldquo;elegante&rdquo;, pero a la vez fácil de mecanizar.</p>
+<h2 id=el-problema-de-la-visibilidad>
+El problema de la visibilidad
+<a class=anchor href=#el-problema-de-la-visibilidad>#</a>
+</h2>
+<p>En el mundo real, los humanos no pueden ver a través de la mayoría de los objetos, por lo que siempre hay obstáculos que nos impiden mirar a lo lejos. Lo que hacemos cuando miramos por estos objetos es cambiar nuestro punto de vista para que no haya ningún obstáculo entre ustedes. Quiere visualizar y personas. Para poder reproducir un entorno visual realista, modelar este comportamiento resulta vital. De ahí nace el problema de la visibilidad en computación gráfica, que consiste en la determinación de las superficies o partes de una superficie que se deben ocultar, dado un punto de vista o ángulo de vista particular.</p>
+<h2 id=problema-de-la-visibilidad-llevado-a-la-computación-visual>
+Problema de la visibilidad llevado a la computación visual
+<a class=anchor href=#problema-de-la-visibilidad-llevado-a-la-computaci%c3%b3n-visual>#</a>
+</h2>
+<p>Cuando queremos mostrar una escena 3D que contiene múltiples objetos, lo hacemos a través de una pantalla 2D, por lo que es importante identificar la parte de la escena que será visible en la pantalla. Para resolver el problema de la visibilidad en el contexto de la computación visual, existen dos métodos:</p>
+<ol>
+<li>
+<p>En el espacio de objetos: el método se implementa en un sistema de coordenadas físico y la superficie visible se determina comparando objetos o partes de objetos. Este método suele ser mejor para escenas que contienen relativamente pocos objetos (polígonos).</p>
+</li>
+<li>
+<p>En el espacio de la imagen: el método se implementa en el sistema de coordenadas de la pantalla y la visibilidad se determina punto por punto.</p>
+</li>
+</ol>
+<h2 id=método-z-buffer>
+Método Z-Buffer
+<a class=anchor href=#m%c3%a9todo-z-buffer>#</a>
+</h2>
+<p>El método Z-Buffer utiliza el segundo método (image-space). La complejidad temporal de este método corresponde al número de píxeles multiplicado por el número de objetos, en lugar de su complejidad espacial correspondiente al doble del número de píxeles, porque funciona el tamaño de cada uno de los dos búferes. La idea principal es probar la profundidad (profundidad de &ldquo;z&rdquo;) de cada superficie para determinar si es visible a partir del concepto de visibilidad geométrica, es decir, dos puntos son visibles entre sí, siempre que los segmentos de línea conectados no estén dentro de un conjunto de obstáculos en el espacio Cualquier obstáculo que se cruce. Para realizar este método, se procesa un píxel a la vez individualmente a lo largo de toda la superficie. El valor de profundidad de cada píxel se compara en el plano de proyección y la superficie más cercana determina el color que se mostrará.</p>
+<h2 id=sin-z-buffer>
+Sin Z-Buffer
+<a class=anchor href=#sin-z-buffer>#</a>
+</h2>
+<iframe id=sin_zBuffer style=width:525px;height:525px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/vc/workshops/Rasterization/sin_zBuffer.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<h2 id=con-z-buffer>
+Con Z-Buffer
+<a class=anchor href=#con-z-buffer>#</a>
+</h2>
 <iframe id=zBuffer style=width:525px;height:525px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -190,12 +259,42 @@ Rendering
           </body>
         </html>
       "></iframe>
+<iframe id=om style=width:625px;height:625px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/vc/workshops/Rasterization/om.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<h2 id=referencias>
+Referencias
+<a class=anchor href=#referencias>#</a>
+</h2>
+<ul>
+<li><a href=https://en.wikipedia.org/wiki/Visibility_%28geometry%29>https://en.wikipedia.org/wiki/Visibility_(geometry)</a></li>
+<li><a href=https://en.wikipedia.org/wiki/Hidden-surface_determination>https://en.wikipedia.org/wiki/Hidden-surface_determination</a></li>
+<li><a href="https://www.youtube.com/watch?v=GxpPpG5pFpE">https://www.youtube.com/watch?v=GxpPpG5pFpE</a></li>
+<li><a href=https://en.wikipedia.org/wiki/Z-buffering#W-buffer>https://en.wikipedia.org/wiki/Z-buffering#W-buffer</a></li>
+<li><a href=https://editor.p5js.org/ffd8/sketches/k00WttDRc>https://editor.p5js.org/ffd8/sketches/k00WttDRc</a></li>
+<li><a href=https://webglfundamentals.org/webgl/lessons/webgl-3d-perspective.html>https://webglfundamentals.org/webgl/lessons/webgl-3d-perspective.html</a></li>
+<li><a href=https://www.pearson.com/us/higher-education/program/ANGEL-Pearson-e-Text-Interactive-Computer-Graphics-Access-Card-8th-Edition/PGM2160099.html>https://www.pearson.com/us/higher-education/program/ANGEL-Pearson-e-Text-Interactive-Computer-Graphics-Access-Card-8th-Edition/PGM2160099.html</a></li>
+</ul>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/c9b83c4d8ed07230a3799ec4bb88edea861e482a title="Last modified by crabaqueropi | December 9, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/999d9a5630248800ab5e2ee3d8122f5301462939 title="Last modified by crabaqueropi | December 11, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>December 9, 2021</span>
+<span>December 11, 2021</span>
 </a>
 </div>
 </div>
@@ -210,6 +309,17 @@ Rendering
 <nav id=TableOfContents>
 <ul>
 <li><a href=#rendering>Rendering</a></li>
+<li><a href=#z-buffer>Z-Buffer</a>
+<ul>
+<li><a href=#introducción>Introducción</a></li>
+<li><a href=#el-problema-de-la-visibilidad>El problema de la visibilidad</a></li>
+<li><a href=#problema-de-la-visibilidad-llevado-a-la-computación-visual>Problema de la visibilidad llevado a la computación visual</a></li>
+<li><a href=#método-z-buffer>Método Z-Buffer</a></li>
+<li><a href=#sin-z-buffer>Sin Z-Buffer</a></li>
+<li><a href=#con-z-buffer>Con Z-Buffer</a></li>
+<li><a href=#referencias>Referencias</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
