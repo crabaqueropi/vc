@@ -20,6 +20,14 @@ function setup() {
   far = 800;
   myShader.setUniform('near', near);
   myShader.setUniform('far', far);
+
+  //Para la pixelación - falta mirar bien el .frag y e. .vert
+  resolution = createSlider(10, 100, 30, 1);
+  resolution.position(10, 50);
+  resolution.style('width', '80px');
+  resolution.input(() => myShader.setUniform('resolution', resolution.value()));
+  myShader.setUniform('resolution', resolution.value());
+
 }
 
 function draw() {
@@ -27,17 +35,23 @@ function draw() {
   perspective(60 * PI/180, width/height, near, far);
 
   // clear BG
-  background(255);
+  background(0);
   noStroke();
 
   fill(255, 0, 0)
-  translate(-150, 150, 0);
-  box(100)
+  translate(-200, 0, 0);
+  sphere(80);
   fill(0, 0, 255)
-  translate(150, -150, 0);
-  box(100)
+  translate(200, 0, 0);
+  box(100);
+  translate(0, 0, -200);
+  sphere(100);
+  translate(0, 150, 200);
+  box(100);
+  translate(0, -300, 0);
+  box(100);
   fill(0, 255, 0)
-  translate(150, -150, 0);
-  box(100)
+  translate(200, 150, 0);
+  sphere(80);
  
 }
