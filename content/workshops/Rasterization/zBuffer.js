@@ -53,5 +53,4 @@ function draw() {
   fill(0, 255, 0)
   translate(200, 150, 0);
   sphere(80);
- 
 }

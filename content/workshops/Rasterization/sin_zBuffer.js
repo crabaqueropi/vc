@@ -21,9 +21,9 @@ function setup() {
 }
 
 function draw() {
-    background(255);    
+  background(255);    
 
-    fill(255, 0, 0)
+  fill(255, 0, 0)
   translate(-200, 0, 0);
   sphere(80);
   fill(0, 0, 255)
