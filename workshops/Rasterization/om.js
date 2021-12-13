@@ -35,16 +35,16 @@ function draw() {
 function cover(texture = false) {
   beginShape();
   if (texture) {
-    vertex(-width / 2, -height / 2, 0, 0, 0);
-    vertex(width / 2, -height / 2, 0, 1, 0);
-    vertex(width / 2, height / 2, 0, 1, 1);
-    vertex(-width / 2, height / 2, 0, 0, 1);
+    vertex(-width, -height, 0, 0, 0);
+    vertex(width, -height, 0, 1, 0);
+    vertex(width, height, 0, 1, 1);
+    vertex(-width, height, 0, 0, 1);
   }
   else {
-    vertex(-width / 2, -height / 2, 0);
-    vertex(width / 2, -height / 2, 0);
-    vertex(width / 2, height / 2, 0);
-    vertex(-width / 2, height / 2, 0);
+    vertex(-width, -height, 0, 0, 0);
+    vertex(width, -height, 0, 1, 0);
+    vertex(width, height, 0, 1, 1);
+    vertex(-width, height, 0, 0, 1);
   }
   endShape(CLOSE);
 }
