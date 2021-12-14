@@ -8,13 +8,13 @@
 <meta property="og:description" content="Ray Tracing #  El trazado de rayos (en inglés ray tracing) es un algoritmo para síntesis de imágenes que calcula el camino de la luz como píxeles en un plano de la imagen y simula sus efectos sobre las superficies virtuales en las que incida. Esta técnica es capaz de producir imágenes con un alto grado de realismo, de una forma mayor que el renderizado mediante líneas de exploración tradicional, aunque el coste computacional del trazado de rayos es mucho mayor.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/1.-Ray-Tracing/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-13T23:11:00-05:00">
+<meta property="article:modified_time" content="2021-12-14T08:28:13-05:00">
 <title>1. Ray Tracing | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.ff6fcc08e713a475dbba168a77f78e136c145a140ebbfd3db8d4b6317b37bb23.js integrity="sha256-/2/MCOcTpHXbuhaKd/eOE2wUWhQOu/09uNS2MXs3uyM=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.3d767cadce3bacf7f7488100b9ba0278a6ec214f4942e72841f16eae963030b0.js integrity="sha256-PXZ8rc47rPf3SIEAuboCeKbsIU9JQucoQfFurpYwMLA=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -172,6 +172,7 @@ Blog
 <li><a href=#historia>Historia</a></li>
 <li><a href=#ray-tracing-en-los-videojuegos>Ray Tracing en los videojuegos</a></li>
 <li><a href=#algoritmo>Algoritmo</a></li>
+<li><a href=#heading></a></li>
 <li><a href=#bibliografía>Bibliografía</a></li>
 </ul>
 </li>
@@ -212,8 +213,23 @@ Ray Tracing en los videojuegos
 Algoritmo
 <a class=anchor href=#algoritmo>#</a>
 </h2>
+<p>En el algoritmo de emision de rayos lo que se pretende es determinar las superficies visibles que se encuentren dentro de la escena que se quiere sintetizar, trazando rayos desde el observador hasta la escena a traves del plano de la imagen.</p>
+<p>En su funcionamiento, se calculan las intersecciones del rayo con los diferentes objetos de la escena y la que este mas cerca al observador, determina cual es el objeto visible.</p>
+<p>En el siguiente ejemplo, vemos tres esferas, reflejandose en el suelo y unas en otras.
+<figure><img src=/vc/images/RayTracing/esferas-ray-tracing.png width=600>
+</figure>
+</p>
+<p>Para simular los efectos de reflexión y refracción se trazan rayos recursivamente desde el punto de intersección que se está sombreando dependiendo de las características del material del objeto intersecado.</p>
+<p>Para simular las sombras arrojadas se emiten rayos desde el punto de intersección hasta las fuentes de luz. Estos rayos se conocen con el nombre de rayos de sombra.</p>
+<p>Realizando nuestro trabajo de investigacion encontramos un blog en el que se indaga de una forma mas amplia en el tema en cuestion, donde tambien encontramos varias preguntas de usuarios aleatorios sobre el funcionamiento e implementacion del algoritmo</p>
+<p>En este link, podemos encontrar una implementacion del algoritmo: &ldquo;<a href=https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing%22>https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing"</a></p>
 <figure><img src=/vc/images/RayTracing/1280px-Ray_trace_diagram.svg.png width=600>
 </figure>
+<h2 id=heading>
+<a class=anchor href=#heading>#</a>
+</h2>
+<p>El trazado de rayos describe un método de imágenes visuales construidas en ambientes de gráficos en 3D, con mayor fotorrealismo que la emisión de rayos o el renderizado mediante línea de escaneo. Este funciona trazando la línea visual de un ojo imaginario a través de cada píxel en una pantalla virtual, y calculando el color del objeto visible a través de ella.</p>
+<p>Es un algoritmo todavía en desarrollo debido a su abundante gasto de recursos, se espera a que se optimice y se perfeccione en los próximos años.</p>
 <h2 id=bibliografía>
 Bibliografía
 <a class=anchor href=#bibliograf%c3%ada>#</a>
@@ -221,11 +237,12 @@ Bibliografía
 <ul>
 <li><a href=https://en.wikipedia.org/wiki/Ray_tracing_%28graphics%29>[1] Ray Tracing. Wikipedia</a>.</li>
 <li><a href=https://es.ign.com/nvidia/138637/feature/que-es-el-trazado-de-rayos-y-por-que-deberia-importarte>[2] Ray Tracing. IGN España</a>.</li>
+<li><a href=https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing>[3] Introduction to Ray Tracing: a Simple Method for Creating 3D Images </a>).</li>
 </ul>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/33948ac82b73520fe2cf505dec57b123dcfeb998 title="Last modified by Harold Bartolo | December 14, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/c6140073651cecbe7fcdeaaed5413bacb58aa817 title="Last modified by daguillenr | December 14, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
 <span>December 14, 2021</span>
 </a>
@@ -246,6 +263,7 @@ Bibliografía
 <li><a href=#historia>Historia</a></li>
 <li><a href=#ray-tracing-en-los-videojuegos>Ray Tracing en los videojuegos</a></li>
 <li><a href=#algoritmo>Algoritmo</a></li>
+<li><a href=#heading></a></li>
 <li><a href=#bibliografía>Bibliografía</a></li>
 </ul>
 </li>
