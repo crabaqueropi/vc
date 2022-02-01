@@ -8,11 +8,15 @@ let plot;
 
 function preload() {
   image_src = loadImage('/vc/images/loro.png');
-  image_rosas = loadImage('/vc/images/rosas.jpg');
+  image_rosas = loadImage('/vc/images/Shaders/p1.jpg');
   video_src = createVideo(['/vc/images/playa.webm']);
   video_src.hide(); 
   om = loadImage('/vc/images/omkara.png');
   mosaic = readShader('/vc/workshops/Test/shaders2.frag');
+  p = [];
+  for (let i = 1; i <= 10; i++) {
+    p.push(loadImage('/vc/images/Shaders/p'+i+'.jpg'));
+  }
 }
 
 function setup() {
@@ -21,7 +25,13 @@ function setup() {
   noStroke();
   shader(mosaic);
   mosaic.setUniform('img', image_src);
-  mosaic.setUniform('img_rosas', image_rosas);
+  mosaic.setUniform('img_rosas', p[0]);
+  for (let i = 0; i < 10; i++) {
+    mosaic.setUniform('imagen'+(i+1), p[i]);
+  }
+  
+
+
   mosaic.setUniform('om', om);
   resolution = createSlider(1, 100, 30, 1);
   resolution.position(10, 10);
