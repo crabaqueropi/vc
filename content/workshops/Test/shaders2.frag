@@ -53,7 +53,7 @@ void main() {
       vec4 fallback = vec4(0.0);
       vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 
-      vec4 omTexel = texture2D(imagen4, omCoord);
+      vec4 omTexel = texture2D(imagen1, omCoord);
       //vec4 omTexel = texture2D(img_rosas, omCoord);
 
       vec4 threshold = vec4(0.2);
