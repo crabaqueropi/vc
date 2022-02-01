@@ -1,0 +1,287 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Shaders #            &#34;  Spatial coherence #            &#34;  Image processing #            &#34;  ">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Shaders #            &#34;  Spatial coherence #            &#34;  Image processing #            &#34;  ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://crabaqueropi.github.io/vc/docs/Workshops/3.-Shaders/shaders/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2022-01-31T21:42:03-05:00">
+<title>Shaders | Visual Computing</title>
+<link rel=manifest href=/vc/manifest.json>
+<link rel=icon href=/vc/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
+<script defer src=/vc/flexsearch.min.js></script>
+<script defer src=/vc/en.search.min.6a57f84b0c3f4667532a286463554ec07e4ad0ee29e31232a2b6dc59c88f4326.js integrity="sha256-alf4Sww/RmdTKihkY1VOwH5K0O4p4xIyorbcWciPQyY=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/vc/><span>Visual Computing</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
+<label for=section-9370f1a5d0248572ac505e0c6d4ad190 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/>Shortcodes</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/buttons/>Buttons</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/columns/>Columns</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/details/>Details</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/expand/>Expand</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/hints/>Hints</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/katex/>Katex</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/mermaid/>Mermaid</a>
+</li>
+<li>
+<input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
+<label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/p5/>P5</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/p5/div/>Div</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/p5/iframe/>Iframe</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/shortcodes/tabs/>Tabs</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-bd592e6455531edb048edb6a320c69c4 class=toggle>
+<label for=section-bd592e6455531edb048edb6a320c69c4 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/team/>Team</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/team/carlosGutierrez/>Carlos Gutierrez</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/team/CristianBaquero/>Cristian Baquero</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/team/DanielGuillen/>Daniel Guillen</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/team/HaroldBartolo/>Harold Bartolo</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-3b150fd6d17eaeb8e2c23d2deaf47560 class=toggle checked>
+<label for=section-3b150fd6d17eaeb8e2c23d2deaf47560 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/>Workshops</a>
+</label>
+<ul>
+<li>
+<input type=checkbox id=section-bc4bb812af6d267897764587a4d857b4 class=toggle>
+<label for=section-bc4bb812af6d267897764587a4d857b4 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/1.-Optical-Illusions/>1. Optical Illusions</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/1.-Optical-Illusions/Optical_Illusions_Carlos_Gutierrez/>Optical Illusions Carlos Gutierrez</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/1.-Optical-Illusions/Optical_Illusions_Cristian_Baquero/>Optical Illusions Cristian Baquero</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/1.-Optical-Illusions/Optical_Illusions_Daniel_Guillen/>Optical Illusions Daniel Guillen</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/1.-Optical-Illusions/Optical_Illusions_Harold_Bartolo/>Optical Illusions Harold Bartolo</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-4fae765cd71486999e52f2020b1fcd28 class=toggle>
+<label for=section-4fae765cd71486999e52f2020b1fcd28 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/>2. Rendering</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/1.-Ray-Tracing/>1. Ray Tracing</a>
+</li>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/2.-Rendering/2.-Rasterization-Algorithm/>2. Rasterization Algorithm</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-88cdcf9569aff624030ddf848b93deb3 class=toggle checked>
+<label for=section-88cdcf9569aff624030ddf848b93deb3 class="flex justify-between">
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/3.-Shaders/>3. Shaders</a>
+</label>
+<ul>
+<li>
+<a href=https://crabaqueropi.github.io/vc/docs/Workshops/3.-Shaders/shaders/ class=active>Shaders</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=/vc/posts/>
+Blog
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/vc/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Shaders</strong>
+<label for=toc-control>
+<img src=/vc/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#shaders>Shaders</a></li>
+<li><a href=#spatial-coherence>Spatial coherence</a></li>
+<li><a href=#image-processing>Image processing</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h2 id=shaders>
+Shaders
+<a class=anchor href=#shaders>#</a>
+</h2>
+<iframe id=shaders style=width:625px;height:625px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.shaderbox/p5.shaderbox.js></script> 
+            
+            
+            
+            
+            <script src=/vc/workshops/Test/shaders.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<h2 id=spatial-coherence>
+Spatial coherence
+<a class=anchor href=#spatial-coherence>#</a>
+</h2>
+<iframe id=om style=width:625px;height:625px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.shaderbox/p5.shaderbox.js></script> 
+            
+            
+            
+            
+            <script src=/vc/workshops/Test/om.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<h2 id=image-processing>
+Image processing
+<a class=anchor href=#image-processing>#</a>
+</h2>
+<iframe id=mask style=width:525px;height:525px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.shaderbox/p5.shaderbox.js></script> 
+            
+            
+            
+            
+            <script src=/vc/workshops/Test/mask.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/crabaqueropi/vc/commit/933a6293221f8bfe3ec277e5a10e55cf08505239 title="Last modified by crabaqueropi | February 1, 2022" target=_blank rel=noopener>
+<img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
+<span>February 1, 2022</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#shaders>Shaders</a></li>
+<li><a href=#spatial-coherence>Spatial coherence</a></li>
+<li><a href=#image-processing>Image processing</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
