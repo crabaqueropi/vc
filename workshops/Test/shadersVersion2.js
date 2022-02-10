@@ -12,7 +12,7 @@ let imageArray1;
 let imageArray2;
 let metrica;
 
-const SAMPLE_RES = 30;
+const SAMPLE_RES = 20;
 
 function preload() {
   video_src = createVideo(['/vc/images/playa.webm']);
