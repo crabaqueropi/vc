@@ -52,15 +52,14 @@ vec2 chooseImage(vec2 fontCoord, float cols, sampler2D palette, vec4 originalCol
 } 
 
 void main() {
- 
+  //Tomado de: https://github.com/VisualComputing/vc
   vec2 fontCoord = vTexCoord * resolution;
-  // remap imgCoord to [0.0, resolution] ∈ Z
+  // remap srcCoord to [0.0, resolution] ∈ Z
   vec2 srcCoord = floor(fontCoord);
-  // remap omCoord to [0.0, 1.0] ∈ R
+  // remap fontCoord to [0.0, 1.0] ∈ R
   fontCoord = fontCoord - srcCoord;
-  // remap imgCoord to [0.0, 1.0] ∈ R
+  // remap srcCoord to [0.0, 1.0] ∈ R
   srcCoord = srcCoord / vec2(resolution);
-  // get vec4 image texel (may be used as color hash key by some apps, e.g., photomosaic)
   vec4 originalColor = texture2D(source, srcCoord);
 
   if(debug) {
@@ -69,6 +68,7 @@ void main() {
   else {
     vec2 tile;
     if(metr != 4.0){
+      //Tomado de: https://github.com/VisualComputing/vc
       tile = vec2((floor(metrica(originalColor.rgb, metr)*cols)+fontCoord.s) / cols, fontCoord.t);
     }else{
       float index=-1.0;
